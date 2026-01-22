@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio STEM - Smart Distance Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <p class="badge">Laporan Proyek STEM</p>
+      <h1>Smart Distance Tracker</h1>
+      <p class="subtitle">
+        Prototipe sistem keamanan otomatis berbasis sensor jarak menggunakan Studuino & ArTec Robo.
+      </p>
+
+      <nav class="nav" aria-label="Navigasi">
+        <a href="#showcase">Showcase</a>
+        <a href="#stem">STEM</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===================== I. SHOWCASE ===================== -->
+    <section id="showcase" class="card">
+      <h2 class="section-title">I. Portfolio Showcase</h2>
+      <hr>
+
+      <div class="long-content">
+
+        <h3>1. Pengenalan Proyek</h3>
+        <p>
+          Smart Distance Tracker adalah robot yang dapat <b>mendeteksi objek di depan</b>.
+          Ketika objek terlalu dekat, robot akan <b>berhenti otomatis</b> dan menyalakan <b>LED + buzzer</b>
+          sebagai peringatan untuk mengurangi risiko benturan.
+        </p>
+        <ul>
+          <li><b>Alat:</b> Robot berbasis Studuino + sensor IR.</li>
+          <li><b>Fitur utama:</b> berhenti otomatis + alarm.</li>
+          <li><b>Manfaat:</b> meningkatkan keamanan gerak robot/alat.</li>
+        </ul>
+
+        <h3>2. Tahap Perencanaan</h3>
+        <ul>
+          <li>Identifikasi masalah: potensi tabrakan robot.</li>
+          <li>Tujuan: robot berhenti otomatis saat objek terlalu dekat.</li>
+          <li>Teori sains: besaran & pengukuran (jarak), ketidakpastian pengukuran, pengaruh cahaya pada sensor IR.</li>
+          <li>Komponen: Studuino, IR sensor, LED, buzzer, motor, baterai, ArTec Blocks, kabel.</li>
+        </ul>
+
+        <h3>3. Desain & Prototyping</h3>
+        <p>
+          Kami membuat sketsa awal untuk menentukan posisi motor dan sensor. Sistem mengikuti prinsip
+          <b>Input – Process – Output</b>.
+        </p>
+        <ul>
+          <li><b>Input:</b> IR Photoreflector membaca nilai pantulan dari objek.</li>
+          <li><b>Process:</b> Studuino membandingkan nilai sensor dengan threshold.</li>
+          <li><b>Output:</b> motor jalan/stop + LED/buzzer menyala saat kondisi bahaya.</li>
+        </ul>
+
+        <h3>4. Implementasi & Coding</h3>
+        <p>
+          Program dibuat menggunakan aplikasi Studuino (block coding). Logika utama:
+        </p>
+        <ul>
+          <li><b>Jika sensor &gt; 7</b> → alarm ON + motor STOP</li>
+          <li><b>Jika sensor ≤ 7</b> → motor jalan</li>
+        </ul>
+
+        <h3>5. Testing & Evaluasi</h3>
+        <ul>
+          <li>Uji jarak (contoh 5–15 cm).</li>
+          <li>Uji penghitungan ketidakpastian pengukuran</li>
+          <li>Uji konsistensi (pengukuran berulang).</li>
+        </ul>
+
+        <div class="grid2">
+          <div class="box">
+            <h4>Masalah</h4>
+            <ul>
+              <li>Kabel usb yang error.</li>
+              <li>Motor kadang terlambat berhenti.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Solusi</h4>
+            <ul>
+              <li>Penyesuaian batasan sensor.</li>
+              <li>Perbaikan posisi sensor.</li>
+              <li>Program dioptimalkan (hapus delay tidak perlu).</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>6. Tim & Refleksi</h3>
+        <p>
+          Tim: <b>Ferdinandus, Leonni, Keyko, Valentino, Christian</b>.
+          Kami belajar bahwa wiring rapi, sensor stabil, dan debug teratur sangat menentukan keberhasilan robot.Dari kegiatan stem ini kami belajar bahwa untuk membuat program kecil seperti ini butuh perhitungan dan berbagai percobaan yang tidak singkat dan mudah. Dalam pembuatan proyek ini kami mengalsmi berbagai revisi dan perubahan dari dencana prototype awal.
+        </p>
+
+        <figure class="main-photo">
+          <img src="assets/foto_kelompok.jpg" alt="Tim">
+          <figcaption>Foto kelompok pada saat pengerjaan kode.</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ===================== II. STEM ===================== -->
+    <section id="stem" class="card">
+      <h2 class="section-title">II. Pendekatan STEM</h2>
+      <hr>
+
+      <div class="stem-long-item">
+        <h3>0. Pengenalan Proyek (STEM)</h3>
+        <ul>
+          <li><b>Science:</b> Besaran, pengukuran, ketidakpastian, dan faktor yang mempengaruhi sensor IR.</li>
+          <li><b>Technology:</b> Studuino (block coding) + ArTec Robo (rangka robot).</li>
+          <li><b>Engineering:</b> perencanaan fisik → desain → prototipe → pengujian.</li>
+          <li><b>Mathematics:</b> rata-rata, $\Delta x$, dan error/ketidakpastian relatif (%).</li>
+        </ul>
+      </div>
+
+      <!-- ===================== SCIENCE (FINAL LENGKAP) ===================== -->
+      <div class="stem-long-item">
+        <h3>1. Science (Fisika: Besaran & Pengukuran)</h3>
+
+        <p>
+          Di proyek ini kami fokus ke besaran <b>panjang/jarak</b>. Karena hasil pengukuran itu bisa berubah-ubah
+          (terutama karena cahaya dan posisi sensor), kami tidak cukup hanya mengukur sekali.
+          Kami melakukan <b>pengukuran berulang</b> dan menghitung <b>ketidakpastian</b> supaya hasilnya lebih bisa dipercaya.
+        </p>
+
+        <h4>A. Apa yang kami ukur</h4>
+        <ul>
+          <li><b>Besaran:</b> jarak (cm).</li>
+          <li><b>Alat pembanding (referensi):</b> mistar.</li>
+          <li><b>Alat/sensor utama:</b> IR Photoreflector (nilai sensor berubah sesuai pantulan IR).</li>
+        </ul>
+
+        <h4>B. Kenapa hasil bisa berbeda (sumber kesalahan)</h4>
+        <ul>
+          <li><b>Kesalahan alat:</b> sensor IR punya batas sensitivitas, mistar punya skala terkecil.</li>
+          <li><b>Kesalahan manusia:</b> posisi mata saat membaca mistar, cara menaruh mistar bisa miring.</li>
+          <li><b>Kondisi percobaan:</b> cahaya terang/redup, permukaan benda, getaran robot.</li>
+          <li><b>Teknik:</b> posisi sensor terlalu tinggi/rendah atau sudut sensor tidak lurus.</li>
+        </ul>
+
+        <h4>C. Rumus yang dipakai</h4>
+        <ul>
+          <li><b>Rata-rata:</b> $\bar{x}=\frac{\sum x}{N}$</li>
+          <li>
+            <b>Ketidakpastian pengukuran tunggal:</b>
+            $\Delta x=\frac{1}{2}\times \text{skala terkecil}$
+            <br>
+            <span class="muted">(dipakai kalau cuma sekali ukur atau menilai ketelitian alat)</span>
+          </li>
+          <li>
+            <b>Ketidakpastian pengukuran berulang (sesuai LKS):</b>
+            $\Delta x=\frac{1}{N}\sqrt{\frac{N\sum x^2-(\sum x)^2}{N-1}}$
+          </li>
+          <li><b>Ketidakpastian relatif:</b> $\frac{\Delta x}{\bar{x}}\times 100\%$</li>
+        </ul>
+
+        <h4>D. Langkah pengolahan data (contoh dari LKS)</h4>
+        <p>Data pengukuran berulang (cm): <b>3.0, 2.8, 2.6, 3.0, 2.8</b></p>
+        <ol>
+          <li>Hitung jumlah data $N$ dan jumlah nilai $\sum x$.</li>
+          <li>Hitung rata-rata $\bar{x}$.</li>
+          <li>Kuadratkan tiap nilai lalu jumlahkan untuk dapat $\sum x^2$.</li>
+          <li>Masukkan ke rumus $\Delta x$ untuk dapat ketidakpastian berulang.</li>
+          <li>Hitung ketidakpastian relatif (%) supaya terlihat seberapa konsisten hasilnya.</li>
+        </ol>
+
+        <h4>E. Hasil olahan (dari langkah di atas)</h4>
+        <ul>
+          <li>Rata-rata $\bar{x}=2.84\ \text{cm}$</li>
+          <li>Ketidakpastian $\Delta x \approx 0.0748\ \text{cm}$</li>
+          <li>Ketidakpastian relatif $\approx 2.63\%$</li>
+        </ul>
+
+        <div class="grid2">
+          <figure class="main-photo">
+            <img src="assets/lks.jpg" alt="LKS">
+            <figcaption>LKS: langkah pengukuran berulang + perhitungan ketidakpastian.</figcaption>
+          </figure>
+
+        <p class="note">
+          Intinya: semakin kecil ketidakpastian relatif, berarti data pengukuran lebih konsisten dan lebih bisa dipercaya.
+        </p>
+      </div>
+
+      <!-- ===================== TECHNOLOGY ===================== -->
+      <div class="stem-long-item">
+        <h3>2. Technology (Studuino & ArTec Robo)</h3>
+
+        <h4>A. Pengenalan Studuino</h4>
+        <p>
+          <b>Studuino</b> adalah mikrokontroler pendidikan yang memudahkan perakitan dan pemrograman robot.
+          Studuino punya port input (misalnya A0–A5) untuk sensor, dan port motor (misalnya M1–M2) untuk mengendalikan motor.
+          Pemrograman dilakukan lewat aplikasi <b>Studuino</b> dengan block coding.
+        </p>
+
+        <ul>
+          <li><b>Peran Studuino di proyek ini:</b>
+            <ul>
+              <li>Membaca IR Photoreflector (A1).</li>
+              <li>Menjalankan logika if–else.</li>
+              <li>Mengendalikan LED (A0), buzzer (A2), motor (M1).</li>
+            </ul>
+          </li>
+          <li><b>Alasan memakai Studuino:</b> mudah diprogram, cocok untuk pembelajaran robotika, dan kompatibel dengan ArTec.</li>
+        </ul>
+
+        <h4>B. Pengenalan ArTec Robo / ArTec Blocks</h4>
+        <p>
+          <b>ArTec Robo</b> adalah kit robotika yang memakai <b>ArTec Blocks</b> sebagai rangka robot.
+          Blocks ini modular (bisa bongkar pasang), jadi desain bisa cepat diubah ketika evaluasi.
+          ArTec membantu membuat rangka stabil dan posisi sensor lebih presisi.
+        </p>
+
+        <ul>
+          <li>Mudah dirakit dan dimodifikasi.</li>
+          <li>Struktur stabil.</li>
+          <li>Posisi sensor dapat diatur (tinggi/sudut).</li>
+        </ul>
+
+        <h4>C. Komponen</h4>
+        <ul>
+          <li>IR Photoreflector – A1</li>
+          <li>LED – A0</li>
+          <li>Buzzer – A2</li>
+          <li>Motor – M1</li>
+          <li>Baterai</li>
+        </ul>
+
+        <h4>D. Cara Kerja</h4>
+        <ul>
+          <li>Sensor &gt; 7 → alarm ON & motor STOP</li>
+          <li>Sensor ≤ 7 → motor jalan</li>
+        </ul>
+
+        <figure class="main-photo">
+          <img src="assets/kode.jpg" alt="Kode Studuino">
+          <figcaption>Screenshot coding Studuino.</figcaption>
+        </figure>
+
+        <figure class="main-photo">
+          <img src="assets/log.jpg" alt="Log Debugging">
+          <figcaption>Log debugging: catatan perbaikan program.</figcaption>
+        </figure>
+
+        <figure class="main-photo">
+          <img src="assets/flowchart.jpg" alt="Flowchart">
+          <figcaption>Flowchart sistem.</figcaption>
+        </figure>
+      </div>
+
+      <!-- ===================== ENGINEERING ===================== -->
+      <div class="stem-long-item">
+        <h3>3. Engineering (Perencanaan → Desain → Prototipe → Pengujian)</h3>
+
+        <h4>A. Perencanaan</h4>
+        <ul>
+          <li>Sensor ditempatkan di depan menghadap lurus supaya pembacaan stabil.</li>
+          <li>Motor dipasang di bawah sebagai penggerak utama.</li>
+          <li>Wiring dibuat rapi dan aman supaya tidak mengganggu roda.</li>
+          <li>Rangka memakai ArTec Blocks supaya mudah disusun ulang saat evaluasi.</li>
+        </ul>
+
+        <h4>B. Desain Awal</h4>
+        <figure class="main-photo">
+          <img src="assets/sketsa.jpg" alt="Sketsa">
+          <figcaption>Sketsa awal perencanaan robot.</figcaption>
+        </figure>
+
+        <h4>C. Prototipe</h4>
+        <figure class="main-photo">
+          <img src="assets/robot.jpg" alt="Robot">
+          <figcaption>Prototipe final Smart Distance Tracker.</figcaption>
+        </figure>
+
+        <h4>D. Pengujian Prototipe</h4>
+        <p>Berikut hasil tes robot setelah dirakit:</p>
+
+        <div class="note">
+          <b>Video Hasil Uji:</b><br>
+          <a href="https://youtu.be/0XWDEHIWLls?si=htdQVasCmSPMHdn_" target="_blank" rel="noopener">
+            https://youtu.be/0XWDEHIWLls?si=htdQVasCmSPMHdn_
+          </a>
+        </div>
+
+        <p>
+          Robot berhasil berhenti otomatis saat objek mendekat. Pada cahaya sangat terang sensor sedikit kurang stabil,
+          jadi threshold dan posisi sensor perlu dikalibrasi ulang.
+        </p>
+      </div>
+
+      <!-- ===================== MATHEMATICS (FINAL LENGKAP) ===================== -->
+      <div class="stem-long-item">
+        <h3>4. Mathematics (Langkah Hitung Rata-rata, Ketidakpastian, dan Error Relatif)</h3>
+
+        <p>
+          Di bagian matematika, kami mengolah data pengukuran berulang supaya hasilnya tidak cuma “kira-kira”.
+          Jadi kami hitung <b>rata-rata</b>, lalu hitung <b>ketidakpastian pengukuran berulang</b> ($\Delta x$),
+          dan terakhir hitung <b>error/ketidakpastian relatif</b> dalam persen.
+        </p>
+
+        <h4>A. Data yang dipakai</h4>
+        <p>Data pengukuran berulang (cm): <b>3.0, 2.8, 2.6, 3.0, 2.8</b></p>
+
+        <table class="data">
+          <thead>
+            <tr><th>Pengukuran</th><th>Nilai (cm)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>3.0</td></tr>
+            <tr><td>2</td><td>2.8</td></tr>
+            <tr><td>3</td><td>2.6</td></tr>
+            <tr><td>4</td><td>3.0</td></tr>
+            <tr><td>5</td><td>2.8</td></tr>
+          </tbody>
+        </table>
+
+        <h4>B. Langkah 1 — Hitung rata-rata ($\bar{x}$)</h4>
+        <p>
+          Rumus rata-rata:
+          <br>
+          $\bar{x}=\frac{\sum x}{N}$
+        </p>
+        <ul>
+          <li>Jumlah data ($N$) = 5</li>
+          <li>$\sum x = 3.0+2.8+2.6+3.0+2.8 = 14.2$</li>
+          <li>$\bar{x} = \frac{14.2}{5} = 2.84\ \text{cm}$</li>
+        </ul>
+
+        <h4>C. Langkah 2 — Hitung $\sum x^2$ (dibutuhkan untuk rumus $\Delta x$)</h4>
+        <p>Kita kuadratkan tiap data lalu dijumlahkan:</p>
+        <ul>
+          <li>$3.0^2=9.00$</li>
+          <li>$2.8^2=7.84$</li>
+          <li>$2.6^2=6.76$</li>
+          <li>$3.0^2=9.00$</li>
+          <li>$2.8^2=7.84$</li>
+          <li>Jadi $\sum x^2 = 9.00+7.84+6.76+9.00+7.84 = 40.44$</li>
+        </ul>
+
+        <h4>D. Langkah 3 — Hitung ketidakpastian pengukuran berulang ($\Delta x$)</h4>
+        <p>
+          Rumus ketidakpastian pengukuran berulang (sesuai LKS):
+          <br>
+          $\Delta x=\frac{1}{N}\sqrt{\frac{N\sum x^2-(\sum x)^2}{N-1}}$
+        </p>
+
+        <p>Substitusi angka:</p>
+        <ul>
+          <li>$N\sum x^2 = 5 \times 40.44 = 202.2$</li>
+          <li>$(\sum x)^2 = (14.2)^2 = 201.64$</li>
+          <li>$N\sum x^2-(\sum x)^2 = 202.2 - 201.64 = 0.56$</li>
+          <li>$\frac{0.56}{N-1} = \frac{0.56}{4} = 0.14$</li>
+          <li>$\sqrt{0.14} \approx 0.374$</li>
+          <li>$\Delta x = \frac{1}{5}\times 0.374 \approx 0.0748\ \text{cm}$</li>
+        </ul>
+
+        <h4>E. Langkah 4 — Hitung error/ketidakpastian relatif (%)</h4>
+        <p>
+          Rumus ketidakpastian relatif:
+          <br>
+          $\text{Relatif}(\%)=\frac{\Delta x}{\bar{x}}\times 100\%$
+        </p>
+
+        <ul>
+          <li>$\frac{\Delta x}{\bar{x}} = \frac{0.0748}{2.84} \approx 0.0263$</li>
+          <li>Relatif $\approx 0.0263 \times 100\% = 2.63\%$</li>
+        </ul>
+
+        <h4>Kesimpulan (dari hitungan)</h4>
+        <ul>
+          <li><b>Rata-rata</b> = <b>2.84 cm</b></li>
+          <li><b>Ketidakpastian</b> = <b>0.0748 cm</b></li>
+          <li><b>Ketidakpastian/error relatif</b> = <b>2.63%</b></li>
+        </ul>
+      </div>
+
+      <div class="stem-long-item">
+        <h3>5. Tim & Refleksi</h3>
+        <ul>
+          <li>Ferdinandus – Kode block, Website, dan flowchart</li>
+          <li>Leonni – Website dan kode block </li>
+          <li>Keyko – Perakitan dan desain</li>
+          <li>Valentino – Perakitan</li>
+          <li>Christian – Dokumentasi</li>
+        </ul>
+
+        <h4>Refleksi</h4>
+        <ul>
+          <li>Sensor perlu kalibrasi agar stabil.</li>
+          <li>Wiring rapi membuat pembacaan lebih konsisten.</li>
+          <li>Debugging membantu menyempurnakan logika.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <p>"Kegagalan hanyalah kesempatan untuk memulai lagi dengan lebih cerdas."</p>
+      <p>© 2026 10.3 kel 6 - Smart Distance Tracker</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- MathJax untuk rumus -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
+
+
+

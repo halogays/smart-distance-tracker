@@ -1,0 +1,339 @@
+:root{
+  --bg:#0b0f14;
+  --card:#111826;
+  --text:#e6edf3;
+  --muted:#9fb0c0;
+  --line:#223044;
+  --accent:#6ee7ff;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,#070a0f,var(--bg));
+  color:var(--text);
+  line-height:1.6;
+}
+
+.container{
+  width:min(980px,92vw);
+  margin:0 auto;
+}
+
+/* ===== HEADER (sticky) ===== */
+.header{
+  padding:36px 0 18px;
+  border-bottom:1px solid var(--line);
+
+  position:sticky;
+  top:0;
+  z-index:10;
+
+  backdrop-filter:blur(10px);
+  background:rgba(7,10,15,.78);
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--accent);
+  margin:0 0 10px;
+  font-size:14px;
+}
+
+h1{
+  margin:6px 0 8px;
+  font-size:34px;
+  line-height:1.1;
+}
+
+.subtitle{
+  margin:0 0 14px;
+  color:var(--muted);
+}
+
+.nav{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:8px 10px;
+  border-radius:10px;
+}
+.nav a:hover{ border-color:var(--accent); }
+.nav a.active{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(110,231,255,.12);
+}
+
+/* ===== CARDS ===== */
+.card{
+  background:rgba(17,24,38,.86);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+  margin:18px 0;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+/* biar anchor scroll gak ketutup header */
+section{ scroll-margin-top:110px; }
+
+.section-title{
+  margin:0;
+  font-size:22px;
+}
+
+hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:12px 0 14px;
+}
+
+/* ===== TEXT ===== */
+.long-content h3, .stem-long-item h3{ margin:14px 0 8px; }
+.long-content h4, .stem-long-item h4{ margin:12px 0 6px; }
+
+ul, ol{ margin:8px 0 0 18px; }
+
+/* ===== GRID 2 ===== */
+.grid2{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:12px;
+}
+@media (min-width:720px){
+  .grid2{ grid-template-columns:1fr 1fr; }
+}
+
+.box{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  background:rgba(0,0,0,.15);
+}
+
+/* ===== IMAGES & GALLERY ===== */
+figure{ margin:0; }
+
+img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid var(--line);
+}
+
+.main-photo img{
+  height:240px;
+}
+
+figcaption{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+@media (min-width:720px){
+  .gallery{ grid-template-columns:1fr 1fr 1fr; }
+}
+
+/* ===== NOTE / LINK ===== */
+.note{
+  margin-top:12px;
+  padding:12px;
+  border-radius:12px;
+  border:1px dashed var(--line);
+  color:var(--muted);
+}
+.note a{ color:var(--accent); }
+
+/* ===== QUOTE ===== */
+blockquote{
+  margin:12px 0 0;
+  padding:10px 12px;
+  border-left:3px solid var(--accent);
+  background:rgba(0,0,0,.15);
+  border-radius:10px;
+  color:var(--text);
+}
+
+/* ===== TABLE ===== */
+table.data{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+table.data th, table.data td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+table.data th{
+  background:rgba(0,0,0,.18);
+  color:var(--text);
+  text-align:left;
+}
+table.data td{ color:var(--muted); }
+
+/* ===== FOOTER ===== */
+.footer{
+  color:var(--muted);
+  padding:12px 0 30px;
+  text-align:center;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  padding:20px;
+}
+.lightbox.show{ display:flex; }
+
+.lightbox-inner{
+  max-width:min(1100px,92vw);
+  width:100%;
+  text-align:center;
+}
+
+.lightbox img{
+  max-width:100%;
+  max-height:78vh;
+  height:auto;
+  border-radius:12px;
+  border:2px solid var(--line);
+  object-fit:contain;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+.lightbox-hint{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}  background: rgba(0,0,0,.15);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.footer { color: var(--muted); padding: 12px 0 30px; text-align: center; }
+
+table.data{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+table.data th, table.data td{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--muted);
+}
+table.data th{
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  text-align: left;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: zoom-out;
+  padding: 20px;
+}
+.lightbox img{
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+.lightbox.show{ display: flex; }figure { margin: 0; }
+img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+figcaption { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+.note {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}
+
+blockquote {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: rgba(0,0,0,.15);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.footer { color: var(--muted); padding: 12px 0 30px; text-align: center; }
+
+/* ===== LIGHTBOX ===== */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: zoom-out;
+  padding: 20px;
+}
+
+.lightbox img{
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+
+.lightbox.show{
+  display: flex;
+}
+
+
